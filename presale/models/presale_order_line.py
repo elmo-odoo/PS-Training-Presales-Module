@@ -1,7 +1,7 @@
 from odoo import fields, models
 
 
-class SaleOrderLine(models.Model):
+class PresaleOrderLine(models.Model):
     _name = 'presale.order.line'
     _description = 'Presale Order Line'
 

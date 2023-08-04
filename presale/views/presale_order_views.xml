@@ -25,7 +25,7 @@
 
                     <notebook>
                         <page string="Order Lines">
-                            <field name="order_lines" mode="tree,form" nolabel="1">
+                            <field name="order_line_ids" mode="tree,form" nolabel="1">
                                 <tree editable="bottom">
                                     <field name="product_id"/>
                                     <field name="quantity"/>

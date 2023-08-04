@@ -1,6 +1,6 @@
 {
     'name': "Presale Orders",
-    'version': '1.0.0',
+    'version': '16.0.1.0.0',
     'depends': ['sale_management'],
     'data': [
         'security/ir.model.access.csv',
@@ -9,10 +9,10 @@
         'views/sale_order_views.xml',
         'views/presale_menus.xml',
         'data/presale_order_sequence.xml',
-        'data/email_templete.xml',
+        'data/email_template.xml',
         'data/archive_presale_orders_cron.xml'
     ],
-    'author': "Moaz Elmaatawy (elmo)",
+    'author': "Odoo PS",
     'category': 'Sales',
     'description': """
         This module is to add the presale orders feature to the current sales module
