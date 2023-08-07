@@ -13,6 +13,7 @@
         'data/archive_presale_orders_cron.xml'
     ],
     'author': "Odoo PS",
+    'license': 'LGPL-3',
     'category': 'Sales',
     'description': """
         This module is to add the presale orders feature to the current sales module
