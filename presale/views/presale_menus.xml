@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <menuitem id="presale_order_menu" name="Presale Orders" parent="sale.sale_order_menu" action="presale_order_action"  groups="presale.group_presale_users"/>
+    </data>
+</odoo>

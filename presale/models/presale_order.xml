@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record model="ir.model.fields" id="x_field_presale_order_name">
+            <field name="name">x_name</field>
+            <field name="model_id" ref="x_model_presale_order"/>
+            <field name="field_description">Preorder Reference</field>
+            <field name="ttype">char</field>
+            <field name="required">1</field>
+            <field name="readonly">1</field>
+            <field name="state">manual</field>
+            <field name="depends">x_active</field>
+            <field name="compute">
+for record in self:
+    if record['x_name'] == "New" :
+        record['x_name'] = self.env['ir.sequence'].next_by_code('presale.order')
+            </field>
+        </record>
+        
+        <record model="ir.model.fields" id="x_field_presale_order_active">
+            <field name="name">x_active</field>
+            <field name="model_id" ref="x_model_presale_order"/>
+            <field name="field_description">Active</field>
+            <field name="ttype">boolean</field>
+            <field name="state">manual</field>
+        </record>
+        
+        <record model="ir.model.fields" id="x_field_presale_order_state">
+            <field name="name">x_state</field>
+            <field name="model_id" ref="x_model_presale_order"/>
+            <field name="field_description">Status</field>
+            <field name="ttype">selection</field>
+            <field name="selection">[('new', 'New'), ('validated', 'Validated'), ('canceled', 'Canceled')]</field>
+            <field name="readonly">1</field>
+            <field name="state">manual</field>
+        </record>
+        
+        <record model="ir.model.fields" id="x_field_presale_order_customer_id">
+            <field name="name">x_customer_id</field>
+            <field name="model_id" ref="x_model_presale_order"/>
+            <field name="field_description">Customer</field>
+            <field name="ttype">many2one</field>
+            <field name="relation">res.partner</field>
+            <field name="state">manual</field>
+        </record>
+
+        <record model="ir.model.fields" id="x_field_presale_order_sale_order_id">
+            <field name="name">x_sale_order_id</field>
+            <field name="model_id" ref="x_model_presale_order"/>
+            <field name="field_description">Sale Order</field>
+            <field name="ttype">many2one</field>
+            <field name="relation">sale.order</field>
+            <field name="state">manual</field>
+        </record>
+
+        <record model="ir.model.fields" id="x_field_presale_order_order_line_ids">
+            <field name="name">x_order_line_ids</field>
+            <field name="model_id" ref="x_model_presale_order"/>
+            <field name="field_description">Order Lines</field>
+            <field name="ttype">one2many</field>
+            <field name="relation_field">x_order_id</field>
+            <field name="relation">x_presale.order.line</field>
+            <field name="state">manual</field>
+        </record>
+        
+
+        <record model="ir.actions.server" id="validate_action">
+            <field name="name">x_validate_action</field>
+            <field name="model_id" ref="x_model_presale_order"/>
+            <field name="state">code</field>
+            <field name="code">
+record.write({'x_state': 'validated'})
+template = env.ref('presale.email_template_presale')
+template.send_mail(record.id, force_send=True)
+            </field>
+        </record>
+        
+    </data>
+</odoo>

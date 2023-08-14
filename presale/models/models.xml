@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record model="ir.model" id="x_model_presale_order">
+            <field name="name">x_presale.order</field>
+            <field name="model">x_presale.order</field>
+            <field name="state">manual</field>
+        </record>
+
+        <record model="ir.model" id="x_model_presale_order_line">
+            <field name="name">x_presale.order.line</field>
+            <field name="model">x_presale.order.line</field>
+            <field name="state">manual</field>
+        </record>
+        
+    </data>
+</odoo>
